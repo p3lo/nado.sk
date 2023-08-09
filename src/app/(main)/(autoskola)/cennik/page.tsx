@@ -63,7 +63,7 @@ function Cennik() {
           </TableBody>
         </Table>
       </div>
-      <div className="py-10 mx-[20%] md:mx-[30%] justify-center flex">
+      <div className="py-10 mx-[10%] md:mx-[30%] justify-center flex">
         <Table>
           <TableHeader>
             <TableRow>
