@@ -25,7 +25,7 @@ function be() {
             Kolok na skúšky: <span className="font-bold">33 €</span>
           </p>
         </div>
-        <div className="flex w-full mt-10 space-x-5">
+        <div className="flex flex-col w-full mt-10 space-y-3 md:flex-row md:space-y-0 md:space-x-5">
           <Picture picture="/BE.webp" />
           <Picture picture="/BE2.webp" />
         </div>
