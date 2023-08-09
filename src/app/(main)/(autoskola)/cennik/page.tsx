@@ -49,11 +49,15 @@ function Cennik() {
           <TableBody>
             {prices_zaklad.map((price) => (
               <TableRow key={price.skupina}>
-                <TableCell className="font-bold">{price.skupina}</TableCell>
-                <TableCell className="text-center">
+                <TableCell className="font-bold whitespace-nowrap">
+                  {price.skupina}
+                </TableCell>
+                <TableCell className="text-center whitespace-nowrap">
                   {price.pre_skupiny}
                 </TableCell>
-                <TableCell className="text-right">{price.cena}</TableCell>
+                <TableCell className="text-right whitespace-nowrap">
+                  {price.cena}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -70,8 +74,12 @@ function Cennik() {
           <TableBody>
             {prices_skupiny.map((price) => (
               <TableRow key={price.skupina}>
-                <TableCell className="font-bold">{price.skupina}</TableCell>
-                <TableCell className="text-right">{price.cena}</TableCell>
+                <TableCell className="font-bold whitespace-nowrap">
+                  {price.skupina}
+                </TableCell>
+                <TableCell className="text-right whitespace-nowrap">
+                  {price.cena}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
