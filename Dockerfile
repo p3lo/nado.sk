@@ -1,68 +1,60 @@
-# base node image
-FROM node:16-bullseye-slim as base
+FROM node:18-alpine AS base
 
-# Install openssl for Prisma
-RUN apt-get update && apt-get install -y openssl
-
-# Install all node_modules, including dev dependencies
-FROM base as deps
-
-RUN mkdir /app
+# Install dependencies only when needed
+FROM base AS deps
+# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
+RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-ADD package.json package-lock.json ./
-RUN npm install --production=false
+# Install dependencies based on the preferred package manager
+COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
+RUN \
+  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
+  elif [ -f package-lock.json ]; then npm ci; \
+  elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i --frozen-lockfile; \
+  else echo "Lockfile not found." && exit 1; \
+  fi
 
-# Setup production node_modules
-FROM base as production-deps
 
-RUN mkdir /app
+# Rebuild the source code only when needed
+FROM base AS builder
 WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
 
-COPY --from=deps /app/node_modules /app/node_modules
-ADD package.json package-lock.json ./
-RUN npm prune --production
+# Next.js collects completely anonymous telemetry data about general usage.
+# Learn more here: https://nextjs.org/telemetry
+# Uncomment the following line in case you want to disable telemetry during the build.
+ENV NEXT_TELEMETRY_DISABLED 1
 
-# Build the app
-FROM base as build
+# RUN yarn build
 
-ENV NODE_ENV=production
-
-RUN mkdir /app
-WORKDIR /app
-
-COPY --from=deps /app/node_modules /app/node_modules
-
-# If we're using Prisma, uncomment to cache the prisma schema
-# ADD prisma .
-# RUN npx prisma generate
-
-#RUN npx prisma migrate deploy
-
-ADD . .
-# ENV DATABASE_URL=file:/app/prisma/dev.db
-# RUN npx prisma db push
-# RUN node --require esbuild-register prisma/seed.ts
+# If using npm comment out above and use below instead
 RUN npm run build
 
-# Finally, build the production image with minimal footprint
-FROM base
-
-# ENV DATABASE_URL=file:/app/prisma/dev.db
-ENV NODE_ENV=production
-
-RUN mkdir /app
+# Production image, copy all the files and run next
+FROM base AS runner
 WORKDIR /app
 
-COPY --from=production-deps /app/node_modules /app/node_modules
+ENV NODE_ENV production
+# Uncomment the following line in case you want to disable telemetry during runtime.
+ENV NEXT_TELEMETRY_DISABLED 1
 
-# Uncomment if using Prisma
-# COPY --from=build /app/node_modules/.prisma /app/node_modules/.prisma
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
 
-COPY --from=build /app/build /app/build
-COPY --from=build /app/public /app/public
-COPY --from=build /app/package.json /app/package.json
-COPY --from=build /app/start.sh /app/start.sh
-# COPY --from=build /app/prisma /app/prisma
-RUN chmod +x /app/start.sh
-ENTRYPOINT [ "./start.sh" ]
+USER nextjs
+
+COPY --from=builder /app/public ./public
+
+# Automatically leverage output traces to reduce image size
+# https://nextjs.org/docs/advanced-features/output-file-tracing
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+
+EXPOSE 3000
+
+ENV PORT 3000
+ENV HOSTNAME localhost
+
+CMD ["node", "server.js"]
