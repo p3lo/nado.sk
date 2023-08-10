@@ -1,5 +1,12 @@
-import TitleSubsection from "@/components/TitleSubsection";
-import React from "react";
+import TitleSubsection from '@/components/TitleSubsection';
+import { Metadata } from 'next';
+import React from 'react';
+
+export const metadata: Metadata = {
+  title: 'Autobusová doprava',
+  description:
+    'Informácie o autobusovej doprave. Zistite, aké typy autobusov sú k dispozícii pre vnútroštátnu a medzinárodnú dopravu a ako získať prepisný poriadok autobusovej dopravy.',
+};
 
 function autobusovaDoprava() {
   return (
@@ -7,13 +14,8 @@ function autobusovaDoprava() {
       <TitleSubsection title="Autobusová doprava" />
       <div className="py-10 mx-[10%]">
         <div className="flex flex-col space-y-3 text-sm">
-          <p className="text-cyan-500">
-            PREPRAVNÝ PORIADOK AUTOBUSOVEJ DOPRAVY - dokument na stiahnutie
-          </p>
-          <p>
-            Na vnútroštátnu a medzinárodnú autobusovú dopravu nám slúžia
-            zájazdové autobusy, konkrétne:
-          </p>
+          <p className="text-cyan-500">PREPRAVNÝ PORIADOK AUTOBUSOVEJ DOPRAVY - dokument na stiahnutie</p>
+          <p>Na vnútroštátnu a medzinárodnú autobusovú dopravu nám slúžia zájazdové autobusy, konkrétne:</p>
           <p>
             <span className="font-bold">50 - miestny autobus</span> Bova
           </p>

@@ -1,14 +1,21 @@
-import React from "react";
-import { AiOutlineMail } from "react-icons/ai";
-import { HiOutlinePhone } from "react-icons/hi2";
+import React from 'react';
+import { AiOutlineMail } from 'react-icons/ai';
+import { HiOutlinePhone } from 'react-icons/hi2';
 
-import TitleSubsection from "@/components/TitleSubsection";
-import Head from "next/head";
-import dynamic from "next/dynamic";
+import TitleSubsection from '@/components/TitleSubsection';
+import Head from 'next/head';
+import dynamic from 'next/dynamic';
+import { Metadata } from 'next';
 
-const MapWithNoSSR = dynamic(() => import("../../../components/Map"), {
+const MapWithNoSSR = dynamic(() => import('../../../components/Map'), {
   ssr: false,
 });
+
+export const metadata: Metadata = {
+  title: 'Kontakt - Autoškola Naďo',
+  description:
+    'Kontaktné informácie pre Autoškolu Naďo. Zistite, ako nás môžete kontaktovať telefonicky alebo e-mailom a kde sa nachádzame. Na stránke nájdete aj interaktívnu mapu s našou polohou.',
+};
 
 function kontakt() {
   return (
@@ -23,19 +30,13 @@ function kontakt() {
             </div>
             <div className="flex items-center space-x-2">
               <HiOutlinePhone />
-              <a
-                href="tel:+421 905 222 200"
-                className="hover:cursor-pointer text-cyan-500"
-              >
+              <a href="tel:+421 905 222 200" className="hover:cursor-pointer text-cyan-500">
                 +421 905 222 200
               </a>
             </div>
             <div className="flex items-center space-x-2">
               <AiOutlineMail />
-              <a
-                href="mailTo:autoskola.nado@gmail.com"
-                className="hover:cursor-pointer text-cyan-500"
-              >
+              <a href="mailTo:autoskola.nado@gmail.com" className="hover:cursor-pointer text-cyan-500">
                 autoskola.nado@gmail.com
               </a>
             </div>

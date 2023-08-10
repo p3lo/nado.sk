@@ -1,5 +1,12 @@
-import TitleSubsection from "@/components/TitleSubsection";
-import React from "react";
+import TitleSubsection from '@/components/TitleSubsection';
+import { Metadata } from 'next';
+import React from 'react';
+
+export const metadata: Metadata = {
+  title: 'Testy na vodičský preukaz online',
+  description:
+    'Vyskúšajte si testy na vodičský preukaz online a pripravte sa na skúšku. Kliknite na odkaz a začnite testovať svoje vedomosti o cestnej premávke ešte dnes!',
+};
 
 function testy() {
   return (

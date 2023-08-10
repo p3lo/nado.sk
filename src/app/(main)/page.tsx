@@ -32,7 +32,9 @@ function Home() {
           </ul>
         </div>
       </div>
-      <p className={`${caveat.className} mx-[10%] text-4xl text-cyan-400`}>Autoškola Ing. NAĎO - s nami to zvládnete</p>
+      <p className={`${caveat.className} mx-[10%] pb-10 text-4xl text-cyan-400`}>
+        Autoškola Ing. NAĎO - s nami to zvládnete
+      </p>
     </div>
   );
 }

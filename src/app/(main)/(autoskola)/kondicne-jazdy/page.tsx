@@ -1,5 +1,12 @@
-import TitleSubsection from "@/components/TitleSubsection";
-import React from "react";
+import TitleSubsection from '@/components/TitleSubsection';
+import { Metadata } from 'next';
+import React from 'react';
+
+export const metadata: Metadata = {
+  title: 'Kondičné jazdy v Autoškole Naďo',
+  description:
+    'Autoškola Naďo ponúka kondičné jazdy pre vodičov, ktorí chcú zlepšiť svoje jazdné zručnosti alebo sa pripraviť na skúšku vodičského preukazu. Kondičné jazdy sú k dispozícii pre všetky skupiny vodičských oprávnení. Kontaktujte nás ešte dnes a zlepšite svoje jazdné zručnosti s Autoškolou Naďo!',
+};
 
 function kondicneJazdy() {
   return (
@@ -19,10 +26,7 @@ function kondicneJazdy() {
             <li>DE</li>
             <li>T</li>
           </ul>
-          <p>
-            Cena je individuálna podľa skupiny, na ktorej sa kondičná jazda
-            vykonáva.
-          </p>
+          <p>Cena je individuálna podľa skupiny, na ktorej sa kondičná jazda vykonáva.</p>
         </div>
       </div>
     </div>

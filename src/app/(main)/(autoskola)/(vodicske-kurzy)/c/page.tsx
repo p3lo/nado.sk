@@ -1,6 +1,13 @@
-import Picture from "@/components/Picture";
-import TitleSubsection from "@/components/TitleSubsection";
-import React from "react";
+import Picture from '@/components/Picture';
+import TitleSubsection from '@/components/TitleSubsection';
+import { Metadata } from 'next';
+import React from 'react';
+
+export const metadata: Metadata = {
+  title: 'Autoškola Naďo - Skupina C',
+  description:
+    'Autoškola Naďo - Skupina C - vodičský preukaz na motorové vozidlá okrem skupiny D1 alebo D, ktoré sú konštruované a určené na prepravu najviac ôsmich osôb okrem vodiča a ktorých najväčšia prípustná celková hmotnosť presahuje 3 500 kg; k motorovému vozidlu tejto skupiny môže byť pripojené prípojné vozidlo s najväčšou prípustnou celkovou hmotnosťou nepresahujúcou 750 kg. Kontaktujte nás ešte dnes a získajte svoj vodičský preukaz s nami!',
+};
 
 function c() {
   return (
@@ -9,28 +16,23 @@ function c() {
       <div className="py-10 mx-[10%]">
         <div className="flex flex-col space-y-5 text-sm">
           <p>
-            Do skupiny motorových vozidiel skupiny{" "}
+            Do skupiny motorových vozidiel skupiny{' '}
             <span className="font-bold">
-              C patria motorové vozidlá okrem skupiny D1 alebo D, ktoré sú
-              konštruované a určené na prepravu najviac ôsmich osôb okrem vodiča
-              a ktorých najväčšia prípustná celková hmotnosť presahuje 3 500 kg
+              C patria motorové vozidlá okrem skupiny D1 alebo D, ktoré sú konštruované a určené na prepravu najviac
+              ôsmich osôb okrem vodiča a ktorých najväčšia prípustná celková hmotnosť presahuje 3 500 kg
             </span>
-            ; k motorovému vozidlu tejto skupiny môže byť pripojené prípojné
-            vozidlo s najväčšou prípustnou celkovou hmotnosťou nepresahujúcou
-            750 kg.
+            ; k motorovému vozidlu tejto skupiny môže byť pripojené prípojné vozidlo s najväčšou prípustnou celkovou
+            hmotnosťou nepresahujúcou 750 kg.
           </p>
           <p>
-            Táto skupina obsahuje{" "}
-            <span className="font-bold">aj skupinu C1*</span>.
+            Táto skupina obsahuje <span className="font-bold">aj skupinu C1*</span>.
           </p>
           <p>
-            * Do skupiny motorových vozidiel skupiny{" "}
-            <span className="font-bold">C1</span> patria motorové vozidlá okrem
-            skupiny D1 alebo D, ktorých najväčšia prípustná celková hmotnosť
-            presahuje 3 500 kg a nepresahuje 7 500 kg, ktoré sú konštruované a
-            určené na prepravu najviac ôsmich osôb okrem vodiča; k motorovému
-            vozidlu tejto skupiny môže byť pripojené prípojné vozidlo s
-            najväčšou prípustnou celkovou hmotnosťou nepresahujúcou 750 kg.
+            * Do skupiny motorových vozidiel skupiny <span className="font-bold">C1</span> patria motorové vozidlá okrem
+            skupiny D1 alebo D, ktorých najväčšia prípustná celková hmotnosť presahuje 3 500 kg a nepresahuje 7 500 kg,
+            ktoré sú konštruované a určené na prepravu najviac ôsmich osôb okrem vodiča; k motorovému vozidlu tejto
+            skupiny môže byť pripojené prípojné vozidlo s najväčšou prípustnou celkovou hmotnosťou nepresahujúcou 750
+            kg.
           </p>
           <p>
             Vek: <span className="font-bold">21 rokov</span>

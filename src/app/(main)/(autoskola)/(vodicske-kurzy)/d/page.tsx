@@ -1,6 +1,13 @@
-import Picture from "@/components/Picture";
-import TitleSubsection from "@/components/TitleSubsection";
-import React from "react";
+import Picture from '@/components/Picture';
+import TitleSubsection from '@/components/TitleSubsection';
+import { Metadata } from 'next';
+import React from 'react';
+
+export const metadata: Metadata = {
+  title: 'Autoškola Naďo - Skupina D',
+  description:
+    'Autoškola Naďo - Skupina D - vodičský preukaz na motorové vozidlá, ktoré sú konštruované a určené na prepravu viac ako ôsmich osôb okrem vodiča; k motorovému vozidlu tejto skupiny smie byť pripojené prípojné vozidlo s najväčšou prípustnou celkovou hmotnosťou nepresahujúcou 750 kg. Kontaktujte nás ešte dnes a získajte svoj vodičský preukaz s nami!',
+};
 
 function d() {
   return (
@@ -9,25 +16,20 @@ function d() {
       <div className="py-10 mx-[10%]">
         <div className="flex flex-col space-y-5 text-sm">
           <p>
-            Do skupiny motorových vozidiel skupiny{" "}
+            Do skupiny motorových vozidiel skupiny{' '}
             <span className="font-bold">
-              D patria motorové vozidlá, ktoré sú konštruované a určené na
-              prepravu viac ako ôsmich osôb okrem vodiča
+              D patria motorové vozidlá, ktoré sú konštruované a určené na prepravu viac ako ôsmich osôb okrem vodiča
             </span>
-            ; k motorovému vozidlu tejto skupiny smie byť pripojené prípojné
-            vozidlo s najväčšou prípustnou celkovou hmotnosťou nepresahujúcou
-            750 kg.
+            ; k motorovému vozidlu tejto skupiny smie byť pripojené prípojné vozidlo s najväčšou prípustnou celkovou
+            hmotnosťou nepresahujúcou 750 kg.
           </p>
           <p>
-            Táto skupina obsahuje{" "}
-            <span className="font-bold">aj skupinu D1*</span>.
+            Táto skupina obsahuje <span className="font-bold">aj skupinu D1*</span>.
           </p>
           <p>
-            * Do skupiny motorových vozidiel skupiny{" "}
-            <span className="font-bold">D1</span> patria motorové vozidlá, ktoré
-            sú konštruované a určené na prepravu najviac 16 osôb okrem vodiča a
-            ktorých dĺžka nepresahuje 8 m; k motorovému vozidlu tejto skupiny
-            môže byť pripojené prípojné vozidlo s najväčšou prípustnou celkovou
+            * Do skupiny motorových vozidiel skupiny <span className="font-bold">D1</span> patria motorové vozidlá,
+            ktoré sú konštruované a určené na prepravu najviac 16 osôb okrem vodiča a ktorých dĺžka nepresahuje 8 m; k
+            motorovému vozidlu tejto skupiny môže byť pripojené prípojné vozidlo s najväčšou prípustnou celkovou
             hmotnosťou nepresahujúcou 750 kg.
           </p>
           <p>
